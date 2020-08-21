@@ -571,6 +571,10 @@ footer > hr {
 .hover_active {
     color: #000000;
 }
+.credit {
+    font-size: 0.7em;
+    color: #727272;
+}
 
 @media screen and (max-width: 900px) {
     #main_nav nav ul li:not(#bars) {
@@ -603,6 +607,21 @@ footer > hr {
         left: 40px;
         /* margin-left: 40px; */
         width: 300px;
+    }
+    #gallery {
+        overflow: scroll;
+        width: 100vw;
+        padding-left: 10vw;
+        margin-left: 0;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .gallery_imgs_name {
+        width: 45vw;
+    }
+    .gallery_buttons {
+        display: none;
     }
     footer {
         margin-top: -2px;
@@ -696,13 +715,14 @@ footer > hr {
         margin-top: 20px;
     }
 
-    .gallery_imgs_name {
+    .gallery_imgs_names {
         width: 70vw;
     }
     .gallery_buttons {
         display: none;
     }
     footer {
+        height: auto;
         margin-top: -2px;
         padding: 0;
     }
@@ -746,5 +766,9 @@ footer > hr {
     .bottom_image p {
         max-width: 80vw;
         margin: 0 auto;
+    }
+    .credit {
+        font-size: 0.6em;
+        padding: 0 5vw;
     }
 }
