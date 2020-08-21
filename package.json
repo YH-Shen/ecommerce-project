@@ -1,0 +1,21 @@
+{
+    "name": "md",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "http-server -c-1 -p 8081"
+       
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Yuhui-Shen/ecommerce-project.git"
+    },
+    "author": "yuhui",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Yuhui-Shen/ecommerce-project/issues"
+    },
+    "homepage": "https://github.com/Yuhui-Shen/ecommerce-project#readme"
+}
