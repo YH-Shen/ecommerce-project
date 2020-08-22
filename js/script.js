@@ -15,6 +15,7 @@
 // }
 
 $(document).ready(function () {
+    change_img();
     // search bar toggle
     search_toggle();
     drop_down();
@@ -151,15 +152,49 @@ var img_names = [
     "WHITE TRAINERS WITH HEEL TAB",
     "Slim fit melange check shirt",
 ];
+var img_names_w = [
+    "Black leather jacket with seamed detail",
+    "Flowing satin skirt",
+    "Handcrafted wool cropped coat",
+    "Blazer dress with ruffled hem",
+    "Wool dressing gown coat",
+    "Classic Trench Coat With Houdstooth Lining",
+    "High neck cape with decorative buttons",
+    "Leather half-moon bag",
+    "Mid-rise skinny jeans",
+    "Flat Black Chelsea Boots With Track Sole",
+    "Flannel trousers with crossover waistband",
+    "Total look knit trousers",
+];
 
 var img_prices = [179.0, 179.0, 69.9, 110.0, 69.9, 179.0, 79.9, 69.9, 79.9, 69.9, 130.0, 69.9];
+var img_prices_w = [
+    349.0,
+    129.0,
+    299.0,
+    179.0,
+    349.0,
+    249.0,
+    119.0,
+    129.0,
+    69.9,
+    249.0,
+    129.0,
+    119.0,
+];
 function create_gallery() {
     for (i = 0; i < tabs; i++) {
+        // create gallery tabs for Men
         jQuery("<div/>", {
             id: "gallery_tab_" + i,
             class: "gallery_tab",
         }).appendTo("#gallery");
 
+        // create gallery tabs for Women
+        jQuery("<div/>", {
+            id: "gallery_tab_w_" + i,
+            class: "gallery_tab_w",
+        }).appendTo("#gallery_w");
         for (j = 0; j < imgs_per_tab; j++) {
             var img_idx = j + i * imgs_per_tab;
             // add 4 images to each tab
@@ -167,15 +202,27 @@ function create_gallery() {
                 id: "img_" + img_idx,
                 class: "gallery_imgs",
             }).appendTo("#gallery_tab_" + i);
+            jQuery("<div/>", {
+                id: "img_w_" + img_idx,
+                class: "gallery_imgs",
+            }).appendTo("#gallery_tab_w_" + i);
 
             jQuery("<div/>", {
                 id: "img_fill_" + img_idx,
                 class: "gallery_imgs_fill",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_fill_w_" + img_idx,
+                class: "gallery_imgs_fill",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_fill_" + img_idx).css(
                 "background-image",
                 "url(../img/men_g_" + img_idx + "a.jpg)"
+            );
+            $("#img_fill_w_" + img_idx).css(
+                "background-image",
+                "url(../img/women_g_" + img_idx + "a.jpg)"
             );
 
             // add text under each image
@@ -183,15 +230,25 @@ function create_gallery() {
                 id: "img_name_" + img_idx,
                 class: "gallery_imgs_name",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_name_w_" + img_idx,
+                class: "gallery_imgs_name",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_name_" + img_idx).text(img_names[img_idx]);
+            $("#img_name_w_" + img_idx).text(img_names_w[img_idx]);
 
             jQuery("<div/>", {
                 id: "img_price_" + img_idx,
                 class: "gallery_imgs_price",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_price_w_" + img_idx,
+                class: "gallery_imgs_price",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_price_" + img_idx).text("$" + img_prices[img_idx]);
+            $("#img_price_w_" + img_idx).text("$" + img_prices_w[img_idx]);
         }
     }
 }
@@ -211,14 +268,17 @@ function manage_gallery() {
         if (current_tab)
             // move all tabs toward left
             $("#gallery_tab_" + Math.abs(current_tab % tabs)).addClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).addClass("opa");
         // current_tab--;
         current_tab = (current_tab + 1) % tabs;
         for (i = 0; i < tabs; i++) {
             $("#gallery_tab_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
+            $("#gallery_tab_w_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
         }
 
         // current_tab;
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).removeClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).removeClass("opa");
 
         console.log("left", current_tab, Math.abs(current_tab % tabs));
 
@@ -230,13 +290,16 @@ function manage_gallery() {
     $("#right").click(function () {
         // move all tabs toward left
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).addClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).addClass("opa");
         current_tab = (current_tab - 1) % tabs;
         for (i = 0; i < tabs; i++) {
             $("#gallery_tab_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
+            $("#gallery_tab_w_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
         }
 
         // current_tab--;
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).removeClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).removeClass("opa");
 
         console.log("right", current_tab, Math.abs(current_tab % tabs));
 
@@ -316,6 +379,23 @@ function img_hover() {
             $("#left_pic_2").attr("src", "./img/linen_shirt.jpg");
         }
     );
+
+    $("#left_pic_1w").hover(
+        function () {
+            $("#left_pic_1w").attr("src", "./img/wool_blazer_arm.jpg");
+        },
+        function () {
+            $("#left_pic_1w").attr("src", "./img/wool_blazer.jpg");
+        }
+    );
+    $("#left_pic_2w").hover(
+        function () {
+            $("#left_pic_2w").attr("src", "./img/satin_shirt_close.jpg");
+        },
+        function () {
+            $("#left_pic_2w").attr("src", "./img/satin_shirt.jpg");
+        }
+    );
 }
 
 function bars_menu() {
@@ -346,4 +426,8 @@ function footer_menu() {
         // console.log($(this).hasClass("active"));
         // console.log($(this).children());
     });
+}
+
+function change_img() {
+    console.log(window.location.href);
 }
