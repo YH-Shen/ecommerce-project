@@ -166,6 +166,9 @@ header input {
     display: flex;
     justify-content: center;
 }
+.two_choices a {
+    margin: 20px;
+}
 #choice_women {
     background-image: url(../img/choice_women.jpg);
 }
@@ -175,12 +178,14 @@ header input {
 
 .choice {
     width: 45vw;
+    height: 85vh;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-    margin: 20px;
+    /* margin: 20px; */
     text-align: center;
 }
+
 #choose_m,
 #choose_w {
     margin-top: 60vh;
@@ -292,7 +297,7 @@ header input {
 .homepage_box p {
     font-size: 0.7em;
 }
-.homepage_box button {
+/* .homepage_box button {
     font-size: 0.75em;
     font-weight: bold;
     padding: 8px 10px;
@@ -307,8 +312,12 @@ header input {
     color: #02596d;
     z-index: 0;
     cursor: pointer;
+} */
+.homepage_box > button:hover {
+    /* background-color: #02596d; */
+    background-color: #000000;
+    color: #ffffff;
 }
-
 .white_button {
     font-size: 0.75em;
     font-weight: bold;
@@ -326,10 +335,6 @@ header input {
     cursor: pointer;
 }
 
-.white_button:hover {
-    background-color: #02596d;
-    color: #ffffff;
-}
 .blue_button {
     font-size: 0.75em;
     font-weight: bold;
@@ -346,10 +351,7 @@ header input {
     z-index: 0;
     cursor: pointer;
 }
-.blue_button:hover {
-    background-color: #ffffff;
-    color: #02596d;
-}
+
 .homepage_down {
     position: absolute;
     height: 40px;
@@ -514,7 +516,7 @@ header input {
     background-size: cover;
 }
 .email_input > input,
-button {
+.email_input > button {
     font-size: 1.2em;
     height: 35px;
 }
@@ -599,11 +601,11 @@ footer > hr {
     z-index: 0;
 }
 
-.email_input > button:hover,
-.homepage_box > button:hover {
+.email_input > button:hover {
     background-color: #ffffff;
     color: #02596d;
 }
+.homepage_box > button:hover,
 .trendy_right_text > button:hover {
     background-color: #02596d;
     color: #ffffff;
@@ -720,14 +722,20 @@ footer > hr {
         flex-direction: column;
         justify-content: center;
     }
-    .choice {
-        max-height: 45%;
-        width: 90vw;
+    .two_choices a {
         margin: 10px 20px;
+        max-height: 42%;
+    }
+    .choice {
+        /* height: 42vh; */
+        /* max-height: 42%; */
+        height: auto;
+        width: 90vw;
+        /* margin: 10px 20px; */
     }
     #choose_m,
     #choose_w {
-        margin-top: 28vh;
+        margin-top: 24vh;
         margin-bottom: 5vh;
     }
     .homepage_box {

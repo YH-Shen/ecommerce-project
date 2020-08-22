@@ -310,15 +310,26 @@ function manage_gallery() {
 }
 
 function hover_buttons() {
-    $(".background_image").hover(
+    $("#choice_women").hover(
         function () {
-            $(".homepage_box > button").css("background-color", "#02596d");
-            $(".homepage_box > button").css("color", "#ffffff");
-            // console.log("hovered");
+            $("#choice_women > button").css("background-color", "#02596d");
+            $("#choice_women > button").css("color", "#ffffff");
+            console.log("hovered");
         },
         function () {
-            $(".homepage_box > button").css("background-color", "#ffffff");
-            $(".homepage_box > button").css("color", "#02596d");
+            $("#choice_women > button").css("background-color", "#ffffff");
+            $("#choice_women > button").css("color", "#02596d");
+        }
+    );
+    $("#choice_men").hover(
+        function () {
+            $("#choice_men > button").css("background-color", "#02596d");
+            $("#choice_men > button").css("color", "#ffffff");
+            console.log("hovered");
+        },
+        function () {
+            $("#choice_men > button").css("background-color", "#ffffff");
+            $("#choice_men > button").css("color", "#02596d");
         }
     );
 }
