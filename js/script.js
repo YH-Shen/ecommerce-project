@@ -40,6 +40,7 @@ $(document).ready(function () {
     hover_buttons();
     img_hover();
     footer_menu();
+    create_collection();
 });
 
 function search_toggle() {
@@ -441,4 +442,68 @@ function footer_menu() {
 
 function change_img() {
     console.log(window.location.href);
+}
+
+var collect_img_names = [
+    "Bomber jacket",
+    "Linen Jacket",
+    "Contrast knit jacket",
+    "100% wool check coat",
+    "100% wool houndstooth coat",
+    "Navy Technical Jacket With Pockets",
+    "Navy Technical Jacket",
+    "Lightweight jacket with hood",
+    "Limited Edition Suede Safari Jacket",
+    "Extra light down gilet",
+    "Contrast suede and knit gilet",
+    "Light down jacket",
+];
+var collect_img_prices = [
+    149.0,
+    179.0,
+    149.0,
+    349.0,
+    349.0,
+    179.0,
+    199.0,
+    149.0,
+    999.0,
+    129.0,
+    199.0,
+    149.0,
+];
+var collect_img_num = 12;
+
+function create_collection() {
+    for (i = 0; i < collect_img_num; i++) {
+        // create divs to contain image, button, name, and price
+        jQuery("<figure/>", {
+            id: "collect_img_" + i,
+            class: "collect_imgs",
+        }).appendTo(".collection_main_items");
+
+        // fill in with image
+        jQuery("<img/>", {
+            id: "collect_img_fill_" + i,
+            class: "collect_imgs_fill",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_fill_" + i).attr("src", "../img/men_c_" + i + "a.jpg");
+
+        // add text under each image
+        jQuery("<figcaption/>", {
+            id: "collect_img_name_" + i,
+            class: "collect_imgs_name",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_name_" + i).text(collect_img_names[i]);
+
+        // add price for each product
+        jQuery("<div/>", {
+            id: "collect_img_price_" + i,
+            class: "collect_imgs_price",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_price_" + i).text("$" + collect_img_prices[i]);
+    }
 }
