@@ -15,6 +15,7 @@
 // }
 
 $(document).ready(function () {
+    change_img();
     // search bar toggle
     search_toggle();
     drop_down();
@@ -39,6 +40,8 @@ $(document).ready(function () {
     hover_buttons();
     img_hover();
     footer_menu();
+    create_collection();
+    // console.log(button_colors[img_colors[1][0]]);
 });
 
 function search_toggle() {
@@ -151,15 +154,49 @@ var img_names = [
     "WHITE TRAINERS WITH HEEL TAB",
     "Slim fit melange check shirt",
 ];
+var img_names_w = [
+    "Black leather jacket with seamed detail",
+    "Flowing satin skirt",
+    "Handcrafted wool cropped coat",
+    "Blazer dress with ruffled hem",
+    "Wool dressing gown coat",
+    "Classic Trench Coat With Houdstooth Lining",
+    "High neck cape with decorative buttons",
+    "Leather half-moon bag",
+    "Mid-rise skinny jeans",
+    "Flat Black Chelsea Boots With Track Sole",
+    "Flannel trousers with crossover waistband",
+    "Total look knit trousers",
+];
 
 var img_prices = [179.0, 179.0, 69.9, 110.0, 69.9, 179.0, 79.9, 69.9, 79.9, 69.9, 130.0, 69.9];
+var img_prices_w = [
+    349.0,
+    129.0,
+    299.0,
+    179.0,
+    349.0,
+    249.0,
+    119.0,
+    129.0,
+    69.9,
+    249.0,
+    129.0,
+    119.0,
+];
 function create_gallery() {
     for (i = 0; i < tabs; i++) {
+        // create gallery tabs for Men
         jQuery("<div/>", {
             id: "gallery_tab_" + i,
             class: "gallery_tab",
         }).appendTo("#gallery");
 
+        // create gallery tabs for Women
+        jQuery("<div/>", {
+            id: "gallery_tab_w_" + i,
+            class: "gallery_tab_w",
+        }).appendTo("#gallery_w");
         for (j = 0; j < imgs_per_tab; j++) {
             var img_idx = j + i * imgs_per_tab;
             // add 4 images to each tab
@@ -167,15 +204,27 @@ function create_gallery() {
                 id: "img_" + img_idx,
                 class: "gallery_imgs",
             }).appendTo("#gallery_tab_" + i);
+            jQuery("<div/>", {
+                id: "img_w_" + img_idx,
+                class: "gallery_imgs",
+            }).appendTo("#gallery_tab_w_" + i);
 
             jQuery("<div/>", {
                 id: "img_fill_" + img_idx,
                 class: "gallery_imgs_fill",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_fill_w_" + img_idx,
+                class: "gallery_imgs_fill",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_fill_" + img_idx).css(
                 "background-image",
                 "url(../img/men_g_" + img_idx + "a.jpg)"
+            );
+            $("#img_fill_w_" + img_idx).css(
+                "background-image",
+                "url(../img/women_g_" + img_idx + "a.jpg)"
             );
 
             // add text under each image
@@ -183,15 +232,25 @@ function create_gallery() {
                 id: "img_name_" + img_idx,
                 class: "gallery_imgs_name",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_name_w_" + img_idx,
+                class: "gallery_imgs_name",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_name_" + img_idx).text(img_names[img_idx]);
+            $("#img_name_w_" + img_idx).text(img_names_w[img_idx]);
 
             jQuery("<div/>", {
                 id: "img_price_" + img_idx,
                 class: "gallery_imgs_price",
             }).appendTo("#img_" + img_idx);
+            jQuery("<div/>", {
+                id: "img_price_w_" + img_idx,
+                class: "gallery_imgs_price",
+            }).appendTo("#img_w_" + img_idx);
 
             $("#img_price_" + img_idx).text("$" + img_prices[img_idx]);
+            $("#img_price_w_" + img_idx).text("$" + img_prices_w[img_idx]);
         }
     }
 }
@@ -211,14 +270,17 @@ function manage_gallery() {
         if (current_tab)
             // move all tabs toward left
             $("#gallery_tab_" + Math.abs(current_tab % tabs)).addClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).addClass("opa");
         // current_tab--;
         current_tab = (current_tab + 1) % tabs;
         for (i = 0; i < tabs; i++) {
             $("#gallery_tab_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
+            $("#gallery_tab_w_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
         }
 
         // current_tab;
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).removeClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).removeClass("opa");
 
         console.log("left", current_tab, Math.abs(current_tab % tabs));
 
@@ -230,13 +292,16 @@ function manage_gallery() {
     $("#right").click(function () {
         // move all tabs toward left
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).addClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).addClass("opa");
         current_tab = (current_tab - 1) % tabs;
         for (i = 0; i < tabs; i++) {
             $("#gallery_tab_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
+            $("#gallery_tab_w_" + i).css("transform", "translateX(" + 80 * current_tab + "vw)");
         }
 
         // current_tab--;
         $("#gallery_tab_" + Math.abs(current_tab % tabs)).removeClass("opa");
+        $("#gallery_tab_w_" + Math.abs(current_tab % tabs)).removeClass("opa");
 
         console.log("right", current_tab, Math.abs(current_tab % tabs));
 
@@ -247,15 +312,26 @@ function manage_gallery() {
 }
 
 function hover_buttons() {
-    $(".background_image").hover(
+    $("#choice_women").hover(
         function () {
-            $(".homepage_box > button").css("background-color", "#02596d");
-            $(".homepage_box > button").css("color", "#ffffff");
-            // console.log("hovered");
+            $("#choice_women > button").css("background-color", "#02596d");
+            $("#choice_women > button").css("color", "#ffffff");
+            console.log("hovered");
         },
         function () {
-            $(".homepage_box > button").css("background-color", "#ffffff");
-            $(".homepage_box > button").css("color", "#02596d");
+            $("#choice_women > button").css("background-color", "#ffffff");
+            $("#choice_women > button").css("color", "#02596d");
+        }
+    );
+    $("#choice_men").hover(
+        function () {
+            $("#choice_men > button").css("background-color", "#02596d");
+            $("#choice_men > button").css("color", "#ffffff");
+            console.log("hovered");
+        },
+        function () {
+            $("#choice_men > button").css("background-color", "#ffffff");
+            $("#choice_men > button").css("color", "#02596d");
         }
     );
 }
@@ -316,6 +392,23 @@ function img_hover() {
             $("#left_pic_2").attr("src", "./img/linen_shirt.jpg");
         }
     );
+
+    $("#left_pic_1w").hover(
+        function () {
+            $("#left_pic_1w").attr("src", "./img/wool_blazer_arm.jpg");
+        },
+        function () {
+            $("#left_pic_1w").attr("src", "./img/wool_blazer.jpg");
+        }
+    );
+    $("#left_pic_2w").hover(
+        function () {
+            $("#left_pic_2w").attr("src", "./img/satin_shirt_close.jpg");
+        },
+        function () {
+            $("#left_pic_2w").attr("src", "./img/satin_shirt.jpg");
+        }
+    );
 }
 
 function bars_menu() {
@@ -346,4 +439,101 @@ function footer_menu() {
         // console.log($(this).hasClass("active"));
         // console.log($(this).children());
     });
+}
+
+function change_img() {
+    console.log(window.location.href);
+}
+
+var collect_img_names = [
+    "Bomber jacket",
+    "Linen Jacket",
+    "Contrast knit jacket",
+    "100% wool check coat",
+    "100% wool houndstooth coat",
+    "Navy Technical Jacket With Pockets",
+    "Navy Technical Jacket",
+    "Lightweight jacket with hood",
+    "Limited Edition Suede Safari Jacket",
+    "Extra light down gilet",
+    "Contrast suede and knit gilet",
+    "Light down jacket",
+];
+var img_colors = [
+    ["Grey", "Beige"],
+    ["Blue", "Khaki"],
+    ["Black"],
+    ["Blue"],
+    ["Brown"],
+    ["Navy_Blue"],
+    ["Navy_Blue"],
+    ["Beige"],
+    ["Brown"],
+    ["Navy_Blue"],
+    ["Navy_Blue"],
+    ["Grey"],
+];
+let button_colors = {
+    Blue: "#3f4458",
+    Grey: "#4e4741",
+    Beige: "#8e7966",
+    Khaki: "#555648",
+    Black: "#000000",
+    Navy_Blue: "#000080",
+    Brown: "#964B00",
+};
+
+var collect_img_prices = [
+    149.0,
+    179.0,
+    149.0,
+    349.0,
+    349.0,
+    179.0,
+    199.0,
+    149.0,
+    999.0,
+    129.0,
+    199.0,
+    149.0,
+];
+var collect_img_num = 12;
+
+function create_collection() {
+    for (i = 0; i < collect_img_num; i++) {
+        // create divs to contain image, button, name, and price
+        jQuery("<figure/>", {
+            id: "collect_img_" + i,
+            class: "collect_imgs",
+        }).appendTo(".collection_main_items");
+
+        // fill in with image
+        jQuery("<img/>", {
+            id: "collect_img_fill_" + i,
+            class: "collect_imgs_fill",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_fill_" + i).attr("src", "../img/men_c_" + i + "a.jpg");
+
+        // add text under each image
+        jQuery("<figcaption/>", {
+            id: "collect_img_name_" + i,
+            class: "collect_imgs_name",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_name_" + i).text(collect_img_names[i]);
+
+        // add price for each product
+        jQuery("<div/>", {
+            id: "collect_img_price_" + i,
+            class: "collect_imgs_price",
+        }).appendTo("#collect_img_" + i);
+
+        $("#collect_img_price_" + i).text("$" + collect_img_prices[i]);
+
+        // jQuery("<button/>", {
+        //     id: "collect_img_price_" + i,
+        //     class: "collect_imgs_price",
+        // }).appendTo("#collect_img_" + i);
+    }
 }

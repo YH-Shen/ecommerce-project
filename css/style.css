@@ -160,16 +160,56 @@ header input {
     height: auto;
     z-index: 9;
 } */
+.two_choices {
+    height: 90vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.two_choices a {
+    margin: 20px;
+}
+#choice_women {
+    background-image: url(../img/choice_women.jpg);
+}
+#choice_men {
+    background-image: url(../img/choice_man-cropped.jpg);
+}
 
+.choice {
+    width: 45vw;
+    height: 85vh;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    /* margin: 20px; */
+    text-align: center;
+}
+
+#choose_m,
+#choose_w {
+    margin-top: 60vh;
+    font-weight: normal;
+    font-size: 1.2em;
+    height: auto;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+#choose_m {
+    width: 120px;
+}
 .background_image {
     height: 90vh;
     max-width: 100%;
     /* width: 100%; */
     overflow: hidden;
-    background-image: url(../img/home_page_cropped.jpg);
+    background-image: url(../img/home_page_men_cropped.jpg);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
+}
+.background_image.w {
+    background-image: url(../img/home_page_women_cropped.jpg);
 }
 /* .background_image img {
     width: 100%;
@@ -257,7 +297,7 @@ header input {
 .homepage_box p {
     font-size: 0.7em;
 }
-.homepage_box button {
+/* .homepage_box button {
     font-size: 0.75em;
     font-weight: bold;
     padding: 8px 10px;
@@ -272,8 +312,12 @@ header input {
     color: #02596d;
     z-index: 0;
     cursor: pointer;
+} */
+.homepage_box > button:hover {
+    /* background-color: #02596d; */
+    background-color: #000000;
+    color: #ffffff;
 }
-
 .white_button {
     font-size: 0.75em;
     font-weight: bold;
@@ -291,10 +335,6 @@ header input {
     cursor: pointer;
 }
 
-.white_button:hover {
-    background-color: #02596d;
-    color: #ffffff;
-}
 .blue_button {
     font-size: 0.75em;
     font-weight: bold;
@@ -311,10 +351,7 @@ header input {
     z-index: 0;
     cursor: pointer;
 }
-.blue_button:hover {
-    background-color: #ffffff;
-    color: #02596d;
-}
+
 .homepage_down {
     position: absolute;
     height: 40px;
@@ -380,12 +417,15 @@ header input {
     background-image: url("../img/trendy.jpg");
     background-repeat: no-repeat;
     background-position: left;
+    background-size: contain;
     height: 80vh;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
 }
-
+.trendy_right.w {
+    background-image: url("../img/trendy_w.jpg");
+}
 .trendy_right_text {
     color: #ffffff;
     padding-left: 10%;
@@ -406,13 +446,15 @@ header input {
     margin-left: 10vw;
 }
 
-#gallery {
+#gallery,
+#gallery_w {
     overflow: hidden;
     width: 80vw;
     display: flex;
     margin-left: 10vw;
 }
-.gallery_tab {
+.gallery_tab,
+.gallery_tab_w {
     /*display: inline;
     */
     display: flex;
@@ -474,7 +516,7 @@ header input {
     background-size: cover;
 }
 .email_input > input,
-button {
+.email_input > button {
     font-size: 1.2em;
     height: 35px;
 }
@@ -491,6 +533,7 @@ footer {
     padding: 0 5vw;
     color: #ffffff;
     background-color: #02596d;
+    /* grid-area: "footer"; */
 }
 .footer_cols {
     display: flex;
@@ -559,17 +602,72 @@ footer > hr {
     z-index: 0;
 }
 
-.email_input > button:hover,
-.homepage_box > button:hover {
+.email_input > button:hover {
     background-color: #ffffff;
     color: #02596d;
 }
+.homepage_box > button:hover,
 .trendy_right_text > button:hover {
     background-color: #02596d;
     color: #ffffff;
 }
 .hover_active {
     color: #000000;
+}
+.credit {
+    font-size: 0.7em;
+    color: #727272;
+}
+
+/* -----------------Collection Page-------------------- */
+.collect_page_main {
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+    grid-template-areas:
+        "breadcrumb breadcrumb"
+        "aside main"
+        "footer footer";
+    grid-template-rows: 30px 1fr 320px;
+    grid-template-columns: 10vw 1fr;
+}
+.collect_page_main > .breadcrumb {
+    grid-area: breadcrumb;
+}
+.collect_page_main > aside {
+    grid-area: aside;
+}
+.collect_page_main > section {
+    grid-area: main;
+}
+.collect_page_main > footer {
+    grid-area: footer;
+}
+.breadcrumb {
+}
+.collection_aside {
+    /* grid-area: "aside"; */
+}
+
+.collection_aside h3 {
+    text-transform: uppercase;
+}
+.collection_aside ul li {
+    display: block;
+    line-height: 1.5em;
+    font-size: 0.7em;
+}
+.collection_main_items {
+    display: flex;
+    flex-flow: row wrap;
+}
+.collect_imgs {
+    /* height: 20px;
+    width: 20px; */
+    border-style: solid;
+}
+.collect_imgs_fill {
+    width: 25vw;
 }
 
 @media screen and (max-width: 900px) {
@@ -592,6 +690,7 @@ footer > hr {
     #avatars {
         justify-content: center;
     }
+
     .background_image {
         height: 70vh;
         max-width: 100%;
@@ -603,6 +702,22 @@ footer > hr {
         left: 40px;
         /* margin-left: 40px; */
         width: 300px;
+    }
+    #gallery,
+    #gallery_w {
+        overflow: scroll;
+        width: 100vw;
+        padding-left: 10vw;
+        margin-left: 0;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .gallery_imgs_name {
+        width: 45vw;
+    }
+    .gallery_buttons {
+        display: none;
     }
     footer {
         margin-top: -2px;
@@ -651,7 +766,30 @@ footer > hr {
         grid-column-end: 3;
         justify-content: space-evenly;
     }
-
+    .two_choices {
+        height: 80vh;
+        max-width: 100%;
+        max-height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .two_choices a {
+        margin: 10px 20px;
+        max-height: 42%;
+    }
+    .choice {
+        /* height: 42vh; */
+        /* max-height: 42%; */
+        height: auto;
+        width: 90vw;
+        /* margin: 10px 20px; */
+    }
+    #choose_m,
+    #choose_w {
+        margin-top: 24vh;
+        margin-bottom: 5vh;
+    }
     .homepage_box {
         color: #ffffff;
         /* position: absolute; */
@@ -687,7 +825,8 @@ footer > hr {
         width: 38vw;
         margin: 4vw;
     }
-    #gallery {
+    #gallery,
+    #gallery_w {
         overflow: scroll;
         width: 100vw;
         padding-left: 10vw;
@@ -696,13 +835,14 @@ footer > hr {
         margin-top: 20px;
     }
 
-    .gallery_imgs_name {
+    .gallery_imgs_names {
         width: 70vw;
     }
     .gallery_buttons {
         display: none;
     }
     footer {
+        height: auto;
         margin-top: -2px;
         padding: 0;
     }
@@ -746,5 +886,9 @@ footer > hr {
     .bottom_image p {
         max-width: 80vw;
         margin: 0 auto;
+    }
+    .credit {
+        font-size: 0.6em;
+        padding: 0 5vw;
     }
 }
