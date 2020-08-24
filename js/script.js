@@ -531,9 +531,9 @@ function create_collection() {
 
         $("#collect_img_price_" + i).text("$" + collect_img_prices[i]);
 
-        jQuery("<button/>", {
-            id: "collect_img_price_" + i,
-            class: "collect_imgs_price",
-        }).appendTo("#collect_img_" + i);
+        // jQuery("<button/>", {
+        //     id: "collect_img_price_" + i,
+        //     class: "collect_imgs_price",
+        // }).appendTo("#collect_img_" + i);
     }
 }
