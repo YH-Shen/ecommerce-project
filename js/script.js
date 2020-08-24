@@ -41,6 +41,7 @@ $(document).ready(function () {
     img_hover();
     footer_menu();
     create_collection();
+    // console.log(button_colors[img_colors[1][0]]);
 });
 
 function search_toggle() {
@@ -458,6 +459,30 @@ var collect_img_names = [
     "Contrast suede and knit gilet",
     "Light down jacket",
 ];
+var img_colors = [
+    ["Grey", "Beige"],
+    ["Blue", "Khaki"],
+    ["Black"],
+    ["Blue"],
+    ["Brown"],
+    ["Navy_Blue"],
+    ["Navy_Blue"],
+    ["Beige"],
+    ["Brown"],
+    ["Navy_Blue"],
+    ["Navy_Blue"],
+    ["Grey"],
+];
+let button_colors = {
+    Blue: "#3f4458",
+    Grey: "#4e4741",
+    Beige: "#8e7966",
+    Khaki: "#555648",
+    Black: "#000000",
+    Navy_Blue: "#000080",
+    Brown: "#964B00",
+};
+
 var collect_img_prices = [
     149.0,
     179.0,
@@ -505,5 +530,10 @@ function create_collection() {
         }).appendTo("#collect_img_" + i);
 
         $("#collect_img_price_" + i).text("$" + collect_img_prices[i]);
+
+        jQuery("<button/>", {
+            id: "collect_img_price_" + i,
+            class: "collect_imgs_price",
+        }).appendTo("#collect_img_" + i);
     }
 }
