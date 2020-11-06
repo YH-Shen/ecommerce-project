@@ -366,12 +366,15 @@ function img_hover() {
             // console.log(address[address.length - 7]);
             // console.log(address);
             var new_address = address.replace("a", "b");
-            // console.log(new_address);
+            console.log(new_address);
             $(this).css("background-image", new_address);
+
         },
         function () {
             var address = $(this).css("background-image");
             var new_address = address.replace("b", "a");
+            console.log(new_address);
+
             $(this).css("background-image", new_address);
         }
     );
