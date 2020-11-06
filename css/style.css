@@ -170,10 +170,10 @@ header input {
     margin: 20px;
 }
 #choice_women {
-    background-image: url(../img/choice_women.jpg);
+    background-image: url(../js/img/choice_women.jpg);
 }
 #choice_men {
-    background-image: url(../img/choice_man-cropped.jpg);
+    background-image: url(../js/img/choice_man-cropped.jpg);
 }
 
 .choice {
@@ -203,13 +203,13 @@ header input {
     max-width: 100%;
     /* width: 100%; */
     overflow: hidden;
-    background-image: url(../img/home_page_men_cropped.jpg);
+    background-image: url(../js/img/home_page_men_cropped.jpg);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
 }
 .background_image.w {
-    background-image: url(../img/home_page_women_cropped.jpg);
+    background-image: url(../js/img/home_page_women_cropped.jpg);
 }
 /* .background_image img {
     width: 100%;
@@ -414,7 +414,7 @@ header input {
 }
 
 .trendy_right {
-    background-image: url("../img/trendy.jpg");
+    background-image: url("../js/img/trendy.jpg");
     background-repeat: no-repeat;
     background-position: left;
     background-size: contain;
@@ -424,7 +424,7 @@ header input {
     align-items: flex-end;
 }
 .trendy_right.w {
-    background-image: url("../img/trendy_w.jpg");
+    background-image: url("../js/img/trendy_w.jpg");
 }
 .trendy_right_text {
     color: #ffffff;
@@ -510,7 +510,7 @@ header input {
     overflow: hidden;
     text-align: center;
 
-    background-image: url("../img/subscribe.jpg");
+    background-image: url("../js/img/subscribe.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
