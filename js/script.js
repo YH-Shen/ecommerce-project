@@ -220,11 +220,11 @@ function create_gallery() {
 
             $("#img_fill_" + img_idx).css(
                 "background-image",
-                "url(../img/men_g_" + img_idx + "a.jpg)"
+                "url(" + "./js/img/men_g_" + img_idx + "a.jpg" + ")"
             );
             $("#img_fill_w_" + img_idx).css(
                 "background-image",
-                "url(../img/women_g_" + img_idx + "a.jpg)"
+                "url(./js/img/women_g_" + img_idx + "a.jpg)"
             );
 
             // add text under each image
@@ -336,23 +336,23 @@ function hover_buttons() {
     );
 }
 
-function gallery_hover() {
-    $(images).hover(
-        function () {
-            // $("#img_fill_" + img_idx).css(
-            //     "background-image",
-            //     "url(../img/man_g_" + img_idx + "b.jpg)"
-            // );
-            // console.log(this.attr("value"));
-        },
-        function () {
-            // $("#img_fill_" + img_idx).css(
-            //     "background-image",
-            //     "url(../img/man_g_" + img_idx + "b.jpg)"
-            // );
-        }
-    );
-}
+// function gallery_hover() {
+//     $(images).hover(
+//         function () {
+//             // $("#img_fill_" + img_idx).css(
+//             //     "background-image",
+//             //     "url(../img/man_g_" + img_idx + "b.jpg)"
+//             // );
+//             // console.log(this.attr("value"));
+//         },
+//         function () {
+//             // $("#img_fill_" + img_idx).css(
+//             //     "background-image",
+//             //     "url(../img/man_g_" + img_idx + "b.jpg)"
+//             // );
+//         }
+//     );
+// }
 var images = "";
 function img_hover() {
     // for (i = 0; i < tabs * imgs_per_tab; i++) {
@@ -365,48 +365,62 @@ function img_hover() {
             var address = $(this).css("background-image");
             // console.log(address[address.length - 7]);
             // console.log(address);
-            var new_address = address.replace("a", "b");
+
+            var pos = address.lastIndexOf('a');
+            var otherchar = "b";
+            var new_address = address.substring(0,pos) + otherchar + address.substring(pos+1);
+            // var new_address = address.replace("a", "b");
+            // console.log("replace a with b");
             // console.log(new_address);
             $(this).css("background-image", new_address);
+
         },
         function () {
             var address = $(this).css("background-image");
-            var new_address = address.replace("b", "a");
+
+            var pos = address.lastIndexOf('b');
+            var otherchar = "a";
+            var new_address = address.substring(0,pos) + otherchar + address.substring(pos+1);
+
+            // var new_address = address.replace("b", "a");
+            // console.log("replace b with a");
+            // console.log(new_address);
+
             $(this).css("background-image", new_address);
         }
     );
 
     $("#left_pic_1").hover(
         function () {
-            $("#left_pic_1").attr("src", "./img/linen_jacket_back.jpg");
+            $("#left_pic_1").attr("src", "./js/img/linen_jacket_back.jpg");
         },
         function () {
-            $("#left_pic_1").attr("src", "./img/linen_jacket.jpg");
+            $("#left_pic_1").attr("src", "./js/img/linen_jacket.jpg");
         }
     );
     $("#left_pic_2").hover(
         function () {
-            $("#left_pic_2").attr("src", "./img/linen_shirt_side.jpg");
+            $("#left_pic_2").attr("src", "./js/img/linen_shirt_side.jpg");
         },
         function () {
-            $("#left_pic_2").attr("src", "./img/linen_shirt.jpg");
+            $("#left_pic_2").attr("src", "./js/img/linen_shirt.jpg");
         }
     );
 
     $("#left_pic_1w").hover(
         function () {
-            $("#left_pic_1w").attr("src", "./img/wool_blazer_arm.jpg");
+            $("#left_pic_1w").attr("src", "./js/img/wool_blazer_arm.jpg");
         },
         function () {
-            $("#left_pic_1w").attr("src", "./img/wool_blazer.jpg");
+            $("#left_pic_1w").attr("src", "./js/img/wool_blazer.jpg");
         }
     );
     $("#left_pic_2w").hover(
         function () {
-            $("#left_pic_2w").attr("src", "./img/satin_shirt_close.jpg");
+            $("#left_pic_2w").attr("src", "./js/img/satin_shirt_close.jpg");
         },
         function () {
-            $("#left_pic_2w").attr("src", "./img/satin_shirt.jpg");
+            $("#left_pic_2w").attr("src", "./js/img/satin_shirt.jpg");
         }
     );
 }
@@ -513,7 +527,7 @@ function create_collection() {
             class: "collect_imgs_fill",
         }).appendTo("#collect_img_" + i);
 
-        $("#collect_img_fill_" + i).attr("src", "../img/men_c_" + i + "a.jpg");
+        $("#collect_img_fill_" + i).attr("src", "./js/img/men_c_" + i + "a.jpg");
 
         // add text under each image
         jQuery("<figcaption/>", {
