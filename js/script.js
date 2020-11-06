@@ -365,14 +365,24 @@ function img_hover() {
             var address = $(this).css("background-image");
             // console.log(address[address.length - 7]);
             // console.log(address);
-            var new_address = address.replace("a", "b");
+
+            var pos = address.lastIndexOf('a');
+            var otherchar = "b";
+            var new_address = address.substring(0,pos) + otherchar + address.substring(pos+1);
+            // var new_address = address.replace("a", "b");
             console.log(new_address);
             $(this).css("background-image", new_address);
 
         },
         function () {
             var address = $(this).css("background-image");
-            var new_address = address.replace("b", "a");
+
+            var pos = address.lastIndexOf('b');
+            var otherchar = "a";
+            var new_address = address.substring(0,pos) + otherchar + address.substring(pos+1);
+
+
+            // var new_address = address.replace("b", "a");
             console.log(new_address);
 
             $(this).css("background-image", new_address);
