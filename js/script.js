@@ -436,16 +436,14 @@ function bars_menu() {
 
 function footer_menu() {
     $(".footer_cols .col").click(function (e) {
-        // console.log(e.target.parentNode.childNodes);
-        // console.log($(this).hasClass("active"));
+       
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");
         } else {
             $(this).addClass("active");
         }
 
-        // console.log($(this).hasClass("active"));
-        // console.log($(this).children());
+        
     });
 }
 
