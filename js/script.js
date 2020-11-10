@@ -423,11 +423,9 @@ function bars_menu() {
     $("#bars").click(function (e) {
         e.stopPropagation();
         $("#bar_drop_down").show();
-        // console.log("clicked");
     });
 
     $(window).click(function () {
-        // console.log($("#bar_drop_down").is(":visible"));
         if ($("#bar_drop_down").is(":visible")) {
             $("#bar_drop_down").css("display", "none");
         }
