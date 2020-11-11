@@ -355,10 +355,7 @@ function hover_buttons() {
 // }
 var images = "";
 function img_hover() {
-    // for (i = 0; i < tabs * imgs_per_tab; i++) {
-    //     images += "#img_fill_" + i + ",";
-    // }
-    // console.log(images);
+    
 
     $(".gallery_imgs_fill").hover(
         function () {
