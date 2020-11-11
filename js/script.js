@@ -363,8 +363,7 @@ function img_hover() {
     $(".gallery_imgs_fill").hover(
         function () {
             var address = $(this).css("background-image");
-            // console.log(address[address.length - 7]);
-            // console.log(address);
+            
 
             var pos = address.lastIndexOf('a');
             var otherchar = "b";
