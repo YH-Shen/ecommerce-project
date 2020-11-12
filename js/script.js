@@ -263,7 +263,6 @@ function manage_gallery() {
             $("#left").prop("disabled", true);
         } else {
             $("#left").removeAttr("disabled");
-            // console.log("enabled");
         }
     });
     $("#left").click(function () {
