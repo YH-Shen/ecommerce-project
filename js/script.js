@@ -41,7 +41,6 @@ $(document).ready(function () {
     img_hover();
     footer_menu();
     create_collection();
-    // console.log(button_colors[img_colors[1][0]]);
 });
 
 function search_toggle() {
